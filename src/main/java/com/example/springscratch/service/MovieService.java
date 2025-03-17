@@ -1,6 +1,7 @@
 package com.example.springscratch.service;
 
 import com.example.springscratch.model.dto.MovieDTO;
+import com.example.springscratch.model.dto.MovieInfoDTO;
 import com.example.springscratch.model.dto.MovieParam;
 import com.example.springscratch.model.repository.MovieRepository;
 import org.springframework.stereotype.Service;
@@ -24,5 +25,9 @@ public class MovieService {
         String nowDateStr = nowDate.format(DateTimeFormatter.ofPattern("yyyyMMdd"));
         MovieParam param = new MovieParam(nowDateStr);
         return movieRepository.getMovies(param);
+    }
+
+    public List<MovieInfoDTO> getMovieInfos() throws Exception {
+        return null;
     }
 }
