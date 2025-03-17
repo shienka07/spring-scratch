@@ -31,8 +31,7 @@ public class MovieRepository implements APIClientRepository {
         String url = "%s/%s.%s?key=%s&movieCd=%s".formatted(
                 baseURL, action, format, key, movie.code());
         String responseBody = callAPI(url);
-        MovieInfoResponse movieInfoResponse = objectMapper.readValue(
-                responseBody, MovieInfoResponse.class);
+        MovieInfoResponse movieInfoResponse = objectMapper.readValue(responseBody, MovieInfoResponse.class);
         MovieInfoResponse.MovieInfo info =
                 movieInfoResponse.movieInfoResult().movieInfo();
         return new MovieInfoDTO(movie,
@@ -45,7 +44,7 @@ public class MovieRepository implements APIClientRepository {
     }
 
     public List<MovieDTO> getMovies(MovieParam param) throws Exception {
-        String action = "boxoffiece/searchDailyBoxOfficeList";
+        String action = "boxoffice/searchDailyBoxOfficeList";
         String format = "json";
         String url = "%s/%s.%s?key=%s&targetDt=%s".formatted(
                 baseURL, action, format, key, param.targetDate());
