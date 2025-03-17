@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 @Service
 public class MovieService {
@@ -16,12 +17,12 @@ public class MovieService {
         this.movieRepository = movieRepository;
     }
 
-    public MovieDTO getMovie() throws Exception {
+    public List<MovieDTO> getMovies() throws Exception {
         // yyyymmdd
         LocalDate nowDate = LocalDate.now();
         nowDate = nowDate.minusDays(1);
         String nowDateStr = nowDate.format(DateTimeFormatter.ofPattern("yyyyMMdd"));
         MovieParam param = new MovieParam(nowDateStr);
-        return movieRepository.getMovie(param);
+        return movieRepository.getMovies(param);
     }
 }
