@@ -4,6 +4,7 @@
     <title>영화 추천</title>
 </head>
 <body>
-<p><%= request.getAttribute("movies") %></p>
+    <p><%= request.getAttribute("movies") %></p>
+    <p><%= request.getAttribute("recommendation")%></p>
 </body>
 </html>
