@@ -28,6 +28,12 @@ public class MovieService {
     }
 
     public List<MovieInfoDTO> getMovieInfos() throws Exception {
-        return null;
+        return getMovies().stream().map((v) -> {
+            try {
+                return movieRepository.getMovieInfo(v);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }).toList();
     }
 }

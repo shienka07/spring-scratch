@@ -1,27 +1,28 @@
 package com.example.springscratch.model.dto;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public record MovieInfoResponse (MovieInfoResult movieInfoResult) {
-
+public record MovieInfoResponse(MovieInfoResult movieInfoResult) {
     @JsonIgnoreProperties(ignoreUnknown = true)
-    public record BoxOfficeResult(
-            String showTm,
-            List<Nation> nations,
-            List<Genre> genres,
-            List<Dir> directors,
-            List<Actor> actors
+    public record MovieInfoResult(MovieInfo movieInfo) {}
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public record MovieInfo(
+            String showTm, // 상영시간
+            List<Nation> nations, // 국가
+            List<Genre> genres, // 장르
+            List<Director> directors, // 감독
+            List<Actor> actors // 배우
     ) {}
-
     @JsonIgnoreProperties(ignoreUnknown = true)
-    public record Nation() {   }
+    public record Nation(String nationNm) {}
     @JsonIgnoreProperties(ignoreUnknown = true)
-    public record Genre() {}
+    public record Genre(String genreNm) {}
     @JsonIgnoreProperties(ignoreUnknown = true)
-    public record Director() {}
+    public record Director(String peopleNm) {}
     @JsonIgnoreProperties(ignoreUnknown = true)
-    public record Actor() {}
+    public record Actor(String peopleNm) {}
 }
